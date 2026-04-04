@@ -1,4 +1,6 @@
-baseURL = 'https://leancontext.dev/'
+baseURL = '/'
+relativeURLs = true
+uglyURLs = false
 languageCode = 'en-us'
 title = 'The Lean Context Thesis'
 

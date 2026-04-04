@@ -12,7 +12,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ .Title }}">
   <meta name="twitter:description" content="{{ .Site.Params.description }}">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 </head>
 <body>
   {{ partial "nav.html" . }}
