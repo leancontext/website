@@ -1,22 +1,41 @@
----
-title: "Prompting"
-subtitle: "Driving Agents to the Lean Context Standard"
-date: 2026-04-04
-layout: "single"
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prompting — Lean Context</title>
+  <meta name="description" content="Driving Agents to the Lean Context Standard">
+  <meta property="og:title" content="Prompting">
+  <meta property="og:description" content="Driving Agents to the Lean Context Standard">
+  <meta property="og:type" content="article">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../" class="nav-logo">lean context</a>
+    <div class="nav-links">
+      <a href="../thesis/">Thesis</a>
+      <a href="../standard/">Standard</a>
+      <a href="../prompting/" class="active">Prompting</a>
+      <a href="https://github.com/jjahns/leancontext.dev" class="nav-ext">GitHub</a>
+    </div>
+  </nav>
 
-## Purpose
-
-Reusable prompts for bootstrapping the Lean Context standard in new and existing repositories. These are instructions you give to an agent to help it create or convert to the three-tier structure.
-
-The prompts are agent-agnostic. Adapt them to whatever tool you use — Claude Code, Cursor, Aider, OpenCode, or a custom harness.
-
-## Bootstrap a New Repository
-
-Use this when starting a project from scratch.
-
-```
-You are setting up a new repository to follow the Lean Context standard.
+  <article class="article">
+    <header class="article-header">
+      <h1>Prompting</h1>
+      <p class="subtitle">Driving Agents to the Lean Context Standard</p>
+    </header>
+    <div class="article-body">
+<h2 id="purpose">Purpose</h2>
+<p>Reusable prompts for bootstrapping the Lean Context standard in new
+and existing repositories. These are instructions you give to an agent
+to help it create or convert to the three-tier structure.</p>
+<p>The prompts are agent-agnostic. Adapt them to whatever tool you
+use.</p>
+<h2 id="bootstrap-a-new-repository">Bootstrap a New Repository</h2>
+<p>Use this when starting a project from scratch.</p>
+<pre><code>You are setting up a new repository to follow the Lean Context standard.
 
 Create the following structure at the repository root:
 
@@ -25,14 +44,14 @@ Create the following structure at the repository root:
    - Security boundaries (never expose credentials, never write to
      production without confirmation)
    - Data integrity rules specific to this project
-   - The andon instruction: "When you lack sufficient context to proceed
+   - The andon instruction: &quot;When you lack sufficient context to proceed
      with confidence, stop. Do not guess. Do not fill gaps with assumptions.
-     State what you believe you are missing and ask."
+     State what you believe you are missing and ask.&quot;
    - Keep it under 50 lines. Every line must be load-bearing.
 
 2. MANIFEST.md — A routing table mapping task patterns to supply documents.
    Start with the 2-3 most obvious domains for this project. Format:
-   - <task pattern> → .context/<topic>.md
+   - &lt;task pattern&gt; → .context/&lt;topic&gt;.md
    - Keep it under 15 lines. The manifest never contains context itself —
      only pointers.
 
@@ -49,26 +68,23 @@ The constitution is not a journal. It is a checklist for operating on
 production. Write it like one.
 
 After creating the structure, show me what you wrote so I can review it
-before we begin work.
-```
-
-## Convert an Existing Instruction File
-
-Use this when a project already has a large CLAUDE.md, AGENTS.md, .cursorrules, or similar file.
-
-```
-I want to convert this repository's instruction file to the Lean Context
+before we begin work.</code></pre>
+<h2 id="convert-an-existing-instruction-file">Convert an Existing
+Instruction File</h2>
+<p>Use this when a project already has a large CLAUDE.md, AGENTS.md,
+.cursorrules, or similar file.</p>
+<pre><code>I want to convert this repository&#39;s instruction file to the Lean Context
 standard. Read the existing instruction file and triage every line:
 
 1. If it prevents IRREVERSIBLE damage (data corruption, security breach,
    destructive command without confirmation) → CONSTITUTION.md
-   "Irreversible" means damage that survives past the session. If the
+   &quot;Irreversible&quot; means damage that survives past the session. If the
    mistake can be caught in code review or rolled back, it is NOT
    constitutional.
 
 2. If it is reference material for a specific task type (architecture
    decisions, operational procedures, domain knowledge) → create a supply
-   document in .context/<topic>.md and add a manifest route in MANIFEST.md
+   document in .context/&lt;topic&gt;.md and add a manifest route in MANIFEST.md
 
 3. If the agent could figure it out by reading the code (file layouts,
    conventions, dependency patterns, import structures) → DELETE IT.
@@ -80,20 +96,17 @@ After triaging, create:
 - .context/ directory with the supply documents
 
 Show me the triage results before writing files. I want to review what
-goes where.
-```
-
-## Andon Response — Filling a Gap
-
-Use this when the agent pulls the andon cord and surfaces missing context.
-
-```
-You've identified a gap in the system's context. Let's fill it together.
+goes where.</code></pre>
+<h2 id="andon-response-filling-a-gap">Andon Response — Filling a
+Gap</h2>
+<p>Use this when the agent pulls the andon cord and surfaces missing
+context.</p>
+<pre><code>You&#39;ve identified a gap in the system&#39;s context. Let&#39;s fill it together.
 
 1. State clearly what invisible knowledge is missing — the thing you
    could not discover from the code.
 2. I will provide the knowledge.
-3. Together we will write a supply document in .context/<topic>.md that
+3. Together we will write a supply document in .context/&lt;topic&gt;.md that
    would have been sufficient for the task that triggered this stop.
 4. We will add a manifest route in MANIFEST.md so the next session
    finds this document automatically.
@@ -106,15 +119,10 @@ The supply document should:
 - Be under 200 lines
 - Be named by retrieval key (what someone would search for), not by
   date or ticket number
-- Include a last-reviewed date in the frontmatter
-```
-
-## Run Compaction
-
-Use this periodically to maintain the system.
-
-```
-Run a lean compaction review on this repository's context system.
+- Include a last-reviewed date in the frontmatter</code></pre>
+<h2 id="run-compaction">Run Compaction</h2>
+<p>Use this periodically to maintain the system.</p>
+<pre><code>Run a lean compaction review on this repository&#39;s context system.
 
 CONSTITUTION.md:
 - Read every line.
@@ -138,15 +146,12 @@ MANIFEST.md:
   deleted).
 
 Present findings as a compaction report. Do not make changes — present
-recommendations for my review.
-```
-
-## Constitution for the Constitution
-
-The meta-instruction: a constitution entry that teaches the agent how to operate within the Lean Context standard. Add this to any project's CONSTITUTION.md.
-
-```
-## Context System
+recommendations for my review.</code></pre>
+<h2 id="constitution-for-the-constitution">Constitution for the
+Constitution</h2>
+<p>The meta-instruction: add this to any project’s CONSTITUTION.md to
+teach the agent the system exists.</p>
+<pre><code>## Context System
 
 This repository follows the Lean Context standard.
 
@@ -162,18 +167,25 @@ believe you are missing and ask. The act of stopping is the system
 working, not failing.
 
 When a gap is found, help write the supply document to fill it.
-When the problem is solved or the gap is filled, the session ends.
-```
-
-## Session Discipline Reminder
-
-These prompts assume session discipline. One task, one session, clean workbench.
-
-When the task is done, end the session. The context system lives in the repository — in the constitution, the manifest, and the supply. It persists across sessions because it is structure, not conversation history.
-
-### Two Clean Session Endings
-
-1. The problem is solved → session produced a code change → session ends.
-2. A gap was discovered and filled → session produced a context change → session ends.
-
-Every session leaves the repository better than it found it.
+When the problem is solved or the gap is filled, the session ends.</code></pre>
+<h2 id="session-discipline">Session Discipline</h2>
+<p>These prompts assume session discipline. One task, one session, clean
+workbench.</p>
+<p>When the task is done, end the session. The context system lives in
+the repository. It persists across sessions because it is structure, not
+conversation history.</p>
+<h3 id="two-clean-session-endings">Two Clean Session Endings</h3>
+<ol type="1">
+<li>The problem is solved → session produced a code change → session
+ends.</li>
+<li>A gap was discovered and filled → session produced a context change
+→ session ends.</li>
+</ol>
+<p>Every session leaves the repository better than it found it.</p>
+    </div>
+    <footer class="article-footer">
+      <p>The Lean Context Thesis · Jay Jahns · 2026</p>
+    </footer>
+  </article>
+</body>
+</html>

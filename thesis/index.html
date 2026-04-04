@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Lean Context Thesis — Lean Context</title>
+  <meta name="description" content="How Humans and AI Agents Make Each Other Smarter">
+  <meta property="og:title" content="The Lean Context Thesis">
+  <meta property="og:description" content="How Humans and AI Agents Make Each Other Smarter">
+  <meta property="og:type" content="article">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../" class="nav-logo">lean context</a>
+    <div class="nav-links">
+      <a href="../thesis/" class="active">Thesis</a>
+      <a href="../standard/">Standard</a>
+      <a href="../prompting/">Prompting</a>
+      <a href="https://github.com/jjahns/leancontext.dev" class="nav-ext">GitHub</a>
+    </div>
+  </nav>
+
+  <article class="article">
+    <header class="article-header">
+      <h1>The Lean Context Thesis</h1>
+      <p class="subtitle">How Humans and AI Agents Make Each Other Smarter</p>
+    </header>
+    <div class="article-body">
+<h3 id="the-problem">The Problem</h3>
+<p>When an AI agent makes a mistake, the instinct is to add more
+instructions. More rules. More examples. More context. Every mistake
+produces another paragraph in the instruction file.</p>
+<p>This is backwards.</p>
+<p>Research confirms what practitioners are discovering: agents perform
+worse as upfront context grows. A 2026 ETH Zurich study
+(arXiv:2602.11988) evaluated 138 task instances across 12 repositories
+and found that LLM-generated instruction files reduce agent success
+rates by 3% and increase costs by over 20%. Developer-written
+instructions fared better — they can improve success in some cases — but
+still carried a significant cost penalty. The pattern is consistent:
+untargeted upfront context is expensive at best and harmful at worst.
+Even well-written context hurts when it is loaded indiscriminately.</p>
+<p>The reason is mechanical. AI agents reason within a finite context
+window. Every token of instruction is a token unavailable for the actual
+work — reading code, understanding state, solving the problem. Overload
+the window with instructions and the agent has less room to think. The
+capability is still there. It is being diluted — not by reducing what
+the agent can do, but by forcing it to spend its capacity navigating
+irrelevant context instead of reasoning about the problem.</p>
+<p>Most projects are running their agents at a deficit before the first
+line of code is read.</p>
+<p>And the problem does not go away as context windows grow. AI labs are
+pushing two-million-token windows and near-instant prompt caching. The
+technical constraint is relaxing. The human constraint is not. A human
+cannot effectively govern, debug, or curate a two-million-token
+instruction file. When the agent hallucinates inside that file, the
+human has no way to determine which of the thousands of loaded
+instructions contributed. Bigger windows without better structure just
+make the failure harder to diagnose. The lean approach is not a
+workaround for small context windows. It is a governance architecture
+that becomes more necessary as windows grow, not less.</p>
+<h3 id="the-degradation-loop">The Degradation Loop</h3>
+<p>This creates a vicious cycle:</p>
+<ol type="1">
+<li>The agent makes a mistake.</li>
+<li>The human adds instructions to prevent it.</li>
+<li>The added context dilutes the agent’s focus.</li>
+<li>The agent makes a different mistake.</li>
+<li>The human adds more instructions.</li>
+</ol>
+<p>Each iteration makes the instruction file larger, the agent less
+focused, and the output worse. The human loses trust. The agent loses
+workbench space. Both sides are working harder and achieving less.</p>
+<p>This loop is the default trajectory of every project that manages
+agent context through accumulation rather than curation.</p>
+<h3 id="the-insight">The Insight</h3>
+<p>Lean manufacturing solved a structurally similar problem decades ago.
+A cluttered workstation slows the worker — not because the worker is
+less skilled, but because the clutter competes for attention and
+physical space. The solution was not bigger workstations. It was 5S:
+sort, set in order, shine, standardize, sustain. Remove what is not
+needed for the current operation. Organize what remains for instant
+retrieval. Maintain discipline through systems, not willpower.</p>
+<p>The second insight came from just-in-time delivery. Parts arrive at
+the workstation when the operation requires them — not before, not in
+bulk. Push-based delivery creates inventory. Inventory creates waste.
+Pull-based delivery eliminates both.</p>
+<p>Applied to AI agents:</p>
+<ul>
+<li>The context window is the workbench.</li>
+<li>Instructions are tools.</li>
+<li>Loading everything at session start is push-based delivery.</li>
+<li>It creates inventory waste that dilutes performance.</li>
+</ul>
+<p>This is not just an analogy. It is a falsifiable claim: the
+principles that govern efficient physical workspaces also govern
+efficient cognitive workspaces. A factory floor and a context window are
+both finite spaces where work happens, and both degrade in similar ways
+when overloaded with materials the current operation does not need. The
+mechanisms differ — one is physical, the other is attentional. But the
+structural failure mode is the same: the worker has less room for the
+actual work. If this claim is wrong, it should be wrong in a testable
+way — show that agents perform equally well with a clean workbench and
+an overloaded one, and the thesis falls apart. The evidence so far runs
+the other direction.</p>
+<h3 id="the-principles">The Principles</h3>
+<p>Four rules follow.</p>
+<p><strong>The Workbench Rule.</strong> Only what the current operation
+requires should be in the context window. Everything else is inventory
+waste. Unlike physical inventory, context waste does not simply take up
+space — it adds noise to signal. The agent must process and navigate
+around every loaded token, whether or not it is relevant to the
+task.</p>
+<p><strong>The Shadow Board Rule.</strong> The agent should be able to
+see what context is available without holding it. A shadow board in a
+factory shows the outline of every tool — where it lives, what it is —
+without occupying the worker’s hands. The agent equivalent is a
+manifest: a lightweight index of available context with trigger
+conditions. The agent reads the manifest, matches against the current
+task, and pulls only what applies.</p>
+<p><strong>The Pull Rule.</strong> Context loads when the task demands
+it, not when the session starts. Push-based context — “here is
+everything you might need” — is overproduction. Pull-based context — “I
+am modifying network configuration, load the relevant reference” — is
+lean.</p>
+<p><strong>The legibility of pull.</strong> The pull action has a second
+benefit beyond efficiency: it makes the agent’s reasoning visible. When
+the agent explicitly loads a supply document — a tool call, a file read,
+a retrieval action visible in the logs — the human can see it happen.
+The agent is showing its work — not just producing output, but revealing
+what knowledge it drew on to produce it. A thirty-second delay for the
+agent to pull context is vastly preferable to two hours untangling a
+confidently wrong result that was generated instantly with no visible
+reasoning trail. Pull is not just an efficiency mechanism. It is a
+governance mechanism.</p>
+<p>The pull rule has a boundary. It works for known-knowns — the agent
+recognizes the task, consults the manifest, loads the right context. It
+handles known-unknowns — the agent knows it needs information it does
+not have and requests it. It does not work for unknown-unknowns —
+context needs that emerge mid-task through reasoning, not recognition. A
+well-designed system must allow the agent to discover and pull context
+during work, not only at the start. The manifest is a starting point for
+retrieval, not the only mechanism.</p>
+<p>But the manifest alone does not cover the case where the agent does
+not know what it is missing. That requires a fourth rule.</p>
+<p><strong>The Andon Rule.</strong> In lean manufacturing, the andon
+cord stops the production line. Any worker can pull it when something is
+wrong — even if they cannot name the exact problem. The act of stopping
+is not a failure. It is the system working.</p>
+<p>The agent equivalent is surfacing uncertainty instead of pushing
+through it. When the agent is making assumptions it cannot verify, when
+the reasoning depends on information it does not have, when something
+feels underspecified — the correct behavior is to stop and say so. “I am
+making assumptions I cannot verify. Here is what I think I am missing.”
+That is the andon cord.</p>
+<p>This fills the unknown-unknowns gap. The pull rule handles what the
+agent knows it needs. The andon rule handles what the agent does not
+know it needs but can sense is absent. The agent does not need to
+identify the specific missing context. It needs to recognize the
+condition of operating without sufficient grounding and treat that
+recognition as a signal to stop, not to improvise.</p>
+<p>The failure mode without this rule is predictable. The agent
+encounters uncertainty, makes a reasonable-sounding guess, and proceeds
+with confidence. The output looks right. The human accepts it. The
+mistake surfaces later, in production, at cost. The andon rule is cheap.
+The alternative is not.</p>
+<p>A hard truth about the andon rule: it runs against the grain of how
+most agents are built. Language models are next-token predictors trained
+to be helpful. Their default is to produce an answer, not to stop and
+say they cannot. The andon rule is the human overriding that default —
+not through retraining the model, but through the constitution. The
+human writes: “Do not guess when you lack data. Stop and surface what
+you are missing.” This is a cultural contract between the human and the
+agent. The constitution encodes it. But whether the agent reliably
+honors it depends on the model, the prompt design, and the system
+architecture together. The constitution sets the expectation. The system
+must be designed to make honoring it the path of least resistance.</p>
+<p>A second hard truth: the andon rule has a cost. An agent that stops
+too often creates alert fatigue. The human who has to unblock the agent
+every five minutes will eventually say “just guess and write the code” —
+which is exactly the behavior the rule was designed to prevent. The
+early stages of the system will feel slower. The agent is stopping to
+ask questions it previously would have hallucinated past. That friction
+is temporary. As the supply matures — as the answers to common questions
+get documented and routed through the manifest — the agent stops less
+because it has what it needs. The andon cord fires less not because the
+agent is guessing more, but because the system has fewer gaps. Patience
+in the early reps is the price of a system that works in the later
+ones.</p>
+<h3 id="the-boundary-conditions">The Boundary Conditions</h3>
+<p>These rules are not universal. They are directional, and they have
+edges.</p>
+<p>Push-based context wins in narrow, well-defined tasks where the full
+scope is known before work begins and the context is small enough that
+loading it costs less than routing to it. A five-line linting rule set,
+a fixed coding standard for a small project, a short safety checklist —
+these are cases where the overhead of a manifest and pull system exceeds
+the cost of just loading the context. The workbench rule still applies:
+the context fits on the bench without crowding out the work.</p>
+<p>Pull-based context fails when the manifest is poorly organized, when
+the supply documents are stale, or when the agent lacks the judgment to
+recognize what it needs. A pull system with a bad manifest is worse than
+a push system with good content — the agent proceeds confidently with
+nothing, instead of proceeding noisily with everything. The system’s
+quality depends entirely on the quality of the routing layer and the
+supply.</p>
+<p>The strongest configuration is hybrid. The constitution is always
+pushed — it is small enough and critical enough to justify the cost. The
+manifest is always visible — it is cheap. Everything else is pulled.
+This is not a pure pull system. It is a system that pushes only what
+earns the right to be pushed, and pulls everything else.</p>
+<p>The line limits in this thesis — 30 to 50 for a constitution, 10 to
+15 for a manifest, 100 as a warning sign — are operational heuristics,
+not empirical laws. They come from practice, not from controlled
+experiments. Different projects, different agents, and different context
+window sizes will shift these numbers. The principle holds regardless of
+the specific thresholds: the constitution should be small enough that
+every line is load-bearing, and the first sign of bloat is the signal to
+curate.</p>
+<p>It is also worth acknowledging that the evidence base is still
+forming. Long-context research consistently shows that reliability
+degrades with irrelevant context — the “lost in the middle” finding,
+needle-in-haystack failures, cost scaling with token count. Structured
+and adaptive context delivery shows measurable improvements over bulk
+loading. But the research is heavily weighted toward code generation
+benchmarks, single-agent evaluations, and Python-heavy repositories. The
+thesis is well-supported in that domain. Its applicability to other
+agent modalities — multi-agent systems, long-horizon planning, non-code
+tasks — is plausible but not yet proven. These are boundary conditions,
+not disclaimers. The claims are falsifiable, and the places where they
+might break are worth naming.</p>
+<p>One more boundary: this thesis talks about “the agent” as if there is
+one behavioral profile. There is not. Outcomes vary by base model,
+tool-use policy, retrieval quality, context window handling, task type,
+system prompt design, and human oversight style. An agent that handles
+long context gracefully may need a different constitution-to-supply
+ratio than one that degrades sharply. An agent with strong tool use may
+pull context effectively; one without may need more pushed. The
+principles in this thesis are structural — they describe how to organize
+context, not how a specific model will respond to it. The tuning is
+per-system.</p>
+<h3 id="the-knowledge-boundary">The Knowledge Boundary</h3>
+<p>Not all knowledge is equal, and not all knowledge is
+discoverable.</p>
+<p>Agents are effective at discovering structure on their own — file
+layout, code conventions, dependency relationships, API patterns. This
+is inferable knowledge. Putting it in instruction files is redundant at
+best and harmful at worst.</p>
+<p>What agents cannot discover is invisible knowledge — why a decision
+was made, what was tried and rejected, what external constraint exists
+that the code does not encode. “We use this network interface model
+because auto-discovered ports lack switch topology data” — no amount of
+code reading reveals that. “Do not run this command without
+confirmation” — the consequence is invisible until it is too late.</p>
+<p>The constitution holds invisible knowledge that prevents damage. The
+supply holds invisible knowledge that enables depth. Inferable knowledge
+belongs in neither — it belongs in the code, where the agent will find
+it.</p>
+<p>The knowledge boundary is also where humans miscalibrate most often.
+They overestimate what is invisible — adding instructions for things the
+agent would have figured out — and underestimate what is truly invisible
+— leaving out the hard-won context that only exists in someone’s head.
+Every unnecessary instruction in the constitution is a tax on every
+session. Every missing piece of invisible knowledge is a landmine.
+Getting this boundary right is a skill, and it improves with reps.</p>
+<p>The boundary also liberates the human. Once you accept that the agent
+will discover file layouts and code conventions on its own, you stop
+spending time documenting them. The human’s scarce resource is not
+typing — it is the institutional knowledge that lives nowhere but in
+their head. The decisions that were made and why. The approaches that
+were tried and failed. The constraints that the code does not encode.
+That is where human effort belongs. The knowledge boundary tells the
+human: stop hand-holding the agent through things it can see for itself,
+and spend that time writing down the things it never could.</p>
+<p>One nuance: “the human should not document inferable knowledge” does
+not mean “the agent must rediscover it from scratch every session.” That
+rediscovery is real cost — time, tokens, and latency. The answer is
+automated context, not human-written context. The system can generate a
+lightweight repository map, a dependency graph, a summary of recent
+changes — and push it cheaply at session start or make it available for
+pull. The rule is that the human does not spend their time writing and
+maintaining this material. The system generates it. The distinction
+matters: human-maintained inferable knowledge decays and becomes a
+maintenance burden. System-generated inferable knowledge stays current
+because it is derived from the source, not transcribed from memory.</p>
+<h3 id="the-pattern">The Pattern</h3>
+<p>These principles produce a three-tier architecture:</p>
+<p><strong>Constitution.</strong> Always loaded. Contains only what, if
+missed once, causes irreversible damage. Hard stops. Prohibitions.
+Non-negotiable procedures. “Irreversible” in practice means: damage that
+survives past the session. Corrupted production data. A destructive
+command run without confirmation. A security boundary crossed. If the
+mistake can be caught in code review or rolled back from version
+control, it belongs in the supply, not the constitution. The test is not
+“would this be bad” but “would this be bad in a way we cannot undo.” For
+most projects the constitution is 30 to 50 lines. If it exceeds 100, it
+contains reference material masquerading as rules.</p>
+<p><strong>Manifest.</strong> Always visible. A routing table that maps
+task patterns to context sources. The agent reads this at session start
+— it costs 10 to 15 lines. When the agent recognizes its current task in
+the manifest, it pulls the relevant context. The manifest never contains
+the context itself.</p>
+<p><strong>Supply.</strong> Pulled on demand. Individual, focused
+documents — each small enough that loading it is cheap, and specific
+enough that all of it is relevant. Reference material, operational
+procedures, architectural decisions. Organized by retrieval key, not by
+chronology or authorship.</p>
+<p>The constitution prevents damage. The manifest enables discovery. The
+supply provides depth. Nothing loads unless earned by the task.</p>
+<p>The three-tier architecture also makes the system debuggable by the
+human. As noted earlier, a monolithic instruction file obscures the
+source of a failure. In the modular system, the failure is localized.
+Was it a missing constitution rule? A bad manifest route? A stale supply
+document? The human traces the problem to a specific layer and fixes it
+there. This is not a secondary benefit. For the human operator, it may
+be the primary one.</p>
+<h3 id="the-constitution-problem">The Constitution Problem</h3>
+<p>The constitution will bloat. This is not a risk. It is a
+certainty.</p>
+<p>Every near-miss becomes a new rule. Every production incident gets
+memorialized as a prohibition. Every “we can never let that happen
+again” earns a line in the constitution. The motivation is reasonable.
+The result is a document that grows monotonically, because adding a rule
+feels like safety and removing one feels like gambling.</p>
+<p>This is how the constitution becomes the junk drawer of institutional
+fear. It starts as a sharp set of hard stops and accumulates into a
+sprawling document that includes reference material, stylistic
+preferences, workflow reminders, and lessons learned alongside the
+actual prohibitions. At that point it is just another instruction file —
+the same bloated context the whole system was designed to avoid.</p>
+<p>The fix is a demotion mechanism. Regular, disciplined review of every
+line in the constitution against a single question: if the agent misses
+this once, is the damage irreversible? If the answer is no, the line
+moves to the supply. It does not get deleted. It becomes reference
+material — available when relevant, not loaded by default.</p>
+<p>The supply is where lessons go to be useful. The constitution is
+where they go to be sacred. Sacred is the enemy of lean. A constitution
+that grows without pruning is a degradation loop wearing different
+clothes.</p>
+<p>The demotion mechanism also changes the human’s relationship with
+failure. Without it, every agent mistake triggers a fear response — add
+a rule, prevent it from ever happening again, never remove the rule
+because removing it feels reckless. The supply gives the human a place
+to put lessons learned without cluttering the constitution. The lesson
+is preserved. The workbench stays clean. The human replaces fear-based
+accumulation with disciplined curation — and stops dreading every
+incident as another paragraph they have to bolt onto an
+already-overloaded file.</p>
+<h3 id="the-calibration-loop">The Calibration Loop</h3>
+<p>The degradation loop and the amplification loop are not just about
+trust. They are about calibration — the human getting better at knowing
+what the agent actually needs.</p>
+<p>Most humans do not know where the boundary is between inferable and
+invisible knowledge for a given agent. They overestimate the agent on
+vibes — “it seems smart, it will figure it out” — and underestimate it
+on specifics — “better add instructions for how imports work.” The
+result is invisible knowledge left out and inferable knowledge
+over-specified. Both are waste.</p>
+<p>Calibration is what closes this gap. It is a skill, and it develops
+through reps. The human watches the agent work with a lean workbench.
+The agent succeeds — the human learns that context was not needed. The
+agent hits a gap — the human writes a supply document to fill it. The
+agent pulls the andon cord — the human discovers invisible knowledge
+they had not externalized. Each cycle sharpens the human’s model of what
+the agent can and cannot infer.</p>
+<p>This is concrete work, not philosophy. After ten sessions, the human
+knows which architectural decisions need to be documented and which the
+agent picks up from the code. After fifty, the manifest routes are tuned
+to real task patterns, not guesses. The constitution has been pruned
+twice. The supply has grown in the right places and stayed empty in the
+places where the agent does not need help. The system is better because
+the human learned where the actual boundaries are — not where they
+assumed them to be.</p>
+<p>Trust is the currency. Calibration is the mechanism.</p>
+<h3 id="the-force-multiplier">The Force Multiplier</h3>
+<p>What follows is a design position, not an empirical finding. The
+evidence supports the mechanics — that untargeted context harms
+performance, that modular systems improve debuggability, that visible
+retrieval builds trust. What the evidence does not yet prove is the full
+loop: that these mechanics, combined, produce a durable amplification
+cycle between humans and agents. That is the bet this thesis is
+making.</p>
+<p>The lean approach reverses the degradation loop into an amplification
+loop:</p>
+<ol type="1">
+<li>The human curates a sharp constitution — only the rules that
+matter.</li>
+<li>The agent starts with a clear mind and a clean workbench.</li>
+<li>It pulls context when the task requires it.</li>
+<li>It stops when it recognizes uncertainty.</li>
+<li>It reasons well.</li>
+<li>The human gets quality output.</li>
+<li>Trust builds. Calibration improves.</li>
+<li>The human delegates more.</li>
+<li>Both get smarter.</li>
+</ol>
+<p>This is a theory of collaboration between humans and a fundamentally
+new kind of cognitive partner. The question is not how to instruct an
+agent. It is how to build a system where a human and an agent make each
+other more capable than either is alone.</p>
+<p>Humans and AI agents are force multipliers of one another — but only
+when neither side is buried under unnecessary weight. The human’s job is
+not to preload the agent with everything it might need. The human’s job
+is to maintain a system where the right context reaches the agent at the
+right time.</p>
+<p>The agent’s job is not to memorize. It is to reason. Give it room —
+not by starving it of context, but by giving it the right context at the
+right time.</p>
+<h3 id="sustaining-the-system">Sustaining the System</h3>
+<p>Lean systems decay without discipline. The fifth S — sustain — is the
+hardest, and no amount of tooling eliminates the need for human
+judgment.</p>
+<p>Automation enforces structure — line budgets, manifest audits,
+staleness checks. These are guardrails. But the decision to promote a
+rule to the constitution or demote it to supply is a judgment call. So
+is the decision that a supply document has become stale, or that a
+manifest entry no longer reflects how work is done.</p>
+<p>Sustain requires two commitments:</p>
+<p><strong>From the system:</strong> automated enforcement of structural
+constraints. The constitution has a line budget. The manifest is checked
+for dead entries. Supply documents carry timestamps and are flagged when
+untouched beyond a threshold. These checks run without human
+intervention.</p>
+<p><strong>From the human:</strong> periodic curation. Reviewing what
+the constitution contains and whether it still belongs there. Evaluating
+whether the supply reflects current reality. This is not busywork — it
+is the ongoing cost of a system that works. A context system that
+launches clean and decays over time has not solved the problem. It has
+deferred it.</p>
+<p>The human maintains the system. The system maintains the agent. The
+agent produces quality work. The quality work justifies the human’s
+investment in the system. This is the sustain loop.</p>
+<h3 id="summary">Summary</h3>
+<ol type="1">
+<li>Untargeted upfront context dilutes agents. Curated, task-triggered
+context improves them. The difference is curation, not quantity.</li>
+<li>The degradation loop — mistakes lead to more instructions lead to
+worse performance — is the default trajectory.</li>
+<li>Treat the context window as a lean workbench — only what the current
+operation requires.</li>
+<li>Use a manifest as a shadow board — visible, not loaded.</li>
+<li>Pull context on demand — never push in bulk.</li>
+<li>Stop when uncertain — the andon rule. Surfacing unknowns is the
+system working, not the system failing.</li>
+<li>Distinguish inferable knowledge from invisible knowledge — only
+invisible knowledge earns a place in the system.</li>
+<li>The constitution will bloat. Demote aggressively. Sacred is the
+enemy of lean.</li>
+<li>Trust flows both ways. Calibration improves both sides. The human
+learns what the agent needs. The agent earns trust by reasoning
+well.</li>
+<li>These claims are falsifiable. Push-context wins for narrow tasks.
+Pull-context fails with bad manifests. The evidence is strongest for
+code agents and still forming elsewhere. Name the boundaries.</li>
+<li>Humans and agents are force multipliers, but only when neither is
+buried.</li>
+<li>Sustain through automation for structure and human judgment for
+curation.</li>
+<li>This system serves the human as much as the agent. Modularity makes
+failures traceable. Pull makes reasoning visible. The architecture
+scales human governance, not just agent performance.</li>
+</ol>
+<p>The goal is not a well-instructed agent. The goal is a
+well-structured system that makes the agent — and the human — smarter
+every session.</p>
+    </div>
+    <footer class="article-footer">
+      <p>The Lean Context Thesis · Jay Jahns · 2026</p>
+    </footer>
+  </article>
+</body>
+</html>
