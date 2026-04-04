@@ -253,6 +253,140 @@ body {
   color: var(--fg);
 }
 
+/* ── Landing Page ── */
+.landing {
+  max-width: 54em;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+.landing-header {
+  margin-bottom: 2rem;
+}
+
+.landing-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--fg-heading);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.landing-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--fg-muted);
+}
+
+.landing-intro {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--fg);
+  line-height: 1.7;
+  max-width: 38em;
+  margin-bottom: 3rem;
+}
+
+.landing-intro p {
+  margin-bottom: 0.8rem;
+}
+
+.landing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 4rem;
+}
+
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--fg-muted);
+}
+
+.card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--fg-heading);
+  margin-bottom: 0.2rem;
+}
+
+.card-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.card p:last-child {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+.landing-concepts {
+  margin-bottom: 4rem;
+}
+
+.landing-concepts h2 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--fg-heading);
+  margin-bottom: 1.5rem;
+}
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.concept {
+  padding: 1rem 0;
+}
+
+.concept h3 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--fg-heading);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.concept p {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+.landing-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+
+.landing-footer p {
+  margin-bottom: 0.3rem;
+}
+
 /* ── Responsive ── */
 @media (max-width: 640px) {
   html {
@@ -288,6 +422,22 @@ body {
   .thesis-body h3 {
     margin-top: 2.5rem;
     font-size: 1.25rem;
+  }
+
+  .landing {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .landing-header h1 {
+    font-size: 2rem;
+  }
+
+  .landing-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .concept-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 

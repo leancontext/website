@@ -1,14 +1,65 @@
 {{ define "main" }}
-<article class="thesis">
-  <header class="thesis-header">
-    <h1>{{ .Title }}</h1>
-    <p class="subtitle">{{ .Site.Params.description }}</p>
+<article class="landing">
+  <header class="landing-header">
+    <h1>The Lean Context Thesis</h1>
+    <p class="landing-subtitle">How Humans and AI Agents Make Each Other Smarter</p>
   </header>
-  <div class="thesis-body">
+
+  <div class="landing-intro">
     {{ .Content }}
   </div>
-  <footer class="thesis-footer">
-    <p>&copy; {{ now.Year }} {{ .Site.Params.author }}. This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p>
+
+  <div class="landing-cards">
+    <a href="{{ "thesis/" | relURL }}" class="card">
+      <h2>The Thesis</h2>
+      <p class="card-label">Why</p>
+      <p>More instructions make agents worse. The degradation loop is the default trajectory. Lean manufacturing principles show the way out — and the evidence supports it.</p>
+    </a>
+    <a href="{{ "standard/" | relURL }}" class="card">
+      <h2>The Standard</h2>
+      <p class="card-label">How</p>
+      <p>Constitution, manifest, supply — the spine pattern. A structural specification for any repository. Session discipline. Context compaction. The cultural contract between human and agent.</p>
+    </a>
+    <a href="{{ "prompting/" | relURL }}" class="card">
+      <h2>Prompting</h2>
+      <p class="card-label">Start</p>
+      <p>Reusable prompts to bootstrap the standard in new repos, convert existing instruction files, fill gaps collaboratively, and run compaction reviews.</p>
+    </a>
+  </div>
+
+  <div class="landing-concepts">
+    <h2>Key Concepts</h2>
+    <div class="concept-grid">
+      <div class="concept">
+        <h3>Constitution</h3>
+        <p>Always loaded. Hard stops only. 30–50 lines. If the agent misses it once, the damage is irreversible.</p>
+      </div>
+      <div class="concept">
+        <h3>Manifest</h3>
+        <p>A routing table. Maps task patterns to supply documents. The agent sees what is available without holding it.</p>
+      </div>
+      <div class="concept">
+        <h3>Supply</h3>
+        <p>Pulled on demand. One topic per document. Invisible knowledge only — what the agent could never infer from code.</p>
+      </div>
+      <div class="concept">
+        <h3>Andon Rule</h3>
+        <p>Stop and surface uncertainty instead of guessing. The agent helps fill the gap. The session ends. The system improves.</p>
+      </div>
+      <div class="concept">
+        <h3>Session Discipline</h3>
+        <p>One task, one session, clean workbench. When the problem is solved or the gap is filled, the session ends.</p>
+      </div>
+      <div class="concept">
+        <h3>Context Compaction</h3>
+        <p>The human maintains the system between sessions so the agent never needs to compress within one.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="landing-footer">
+    <p>Jay Jahns · April 2026</p>
+    <p>Built with conviction by a human and three AI models who disagreed productively.</p>
   </footer>
 </article>
 {{ end }}
