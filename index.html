@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lean Context</title>
-  <meta name="description" content="How Humans and AI Agents Make Each Other Smarter">
+  <meta name="description" content="More instructions make your agents worse. The Lean Context Thesis is a structural approach to human-agent collaboration.">
   <meta property="og:title" content="The Lean Context Thesis">
-  <meta property="og:description" content="A structural approach to human-agent collaboration. Stop stuffing context. Start curating it.">
+  <meta property="og:description" content="More instructions make your agents worse. Stop stuffing context. Start curating it.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -14,9 +14,7 @@
   <nav class="nav">
     <a href="./" class="nav-logo">lean context</a>
     <div class="nav-links">
-      <a href="thesis/">Thesis</a>
-      <a href="standard/">Standard</a>
-      <a href="prompting/">Prompting</a>
+      <a href="thesis/">Full thesis</a>
       <a href="https://github.com/jjahns/leancontext.dev" class="ext">GitHub</a>
     </div>
   </nav>
@@ -24,61 +22,117 @@
   <section class="hero">
     <h1>More instructions make your agents worse.</h1>
     <p class="hero-sub">The Lean Context Thesis is a structural approach to human-agent collaboration. Stop stuffing the context window. Start curating it.</p>
-    <a href="thesis/" class="hero-cta">Read the thesis →</a>
   </section>
 
-  <section class="cards">
-    <a href="thesis/" class="card">
-      <span class="card-tag">the problem</span>
+  <!-- ── THE THREE PILLARS ── -->
+  <section class="pillars">
+    <div class="pillar">
+      <span class="pillar-tag">the problem</span>
       <h2>End the junk drawer</h2>
-      <p>Every mistake triggers more instructions. More instructions dilute focus. Focus degrades. A different mistake happens. The loop repeats. This is the default trajectory.</p>
-      <span class="card-arrow">Read the thesis →</span>
-    </a>
-    <a href="standard/" class="card">
-      <span class="card-tag">the framework</span>
+      <p>Every mistake triggers more instructions. More instructions dilute focus. A different mistake happens. The loop repeats.</p>
+      <p>This is the <em>degradation loop</em> — the default trajectory of every project that manages agent context through accumulation rather than curation. Adding rules feels like safety. It is the opposite.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-tag">the framework</span>
       <h2>Lean architecture for AI</h2>
-      <p>Constitution for safety. Manifest for routing. Supply for depth. The agent pulls only what it needs, when it needs it. The spine pattern makes it structural.</p>
-      <span class="card-arrow">Read the standard →</span>
-    </a>
-    <a href="prompting/" class="card">
-      <span class="card-tag">the human impact</span>
+      <p>Treat the context window like a factory workbench. Only what the current operation needs. Everything else is inventory waste.</p>
+      <p>A <em>constitution</em> for hard stops. A <em>manifest</em> to route context. A <em>supply</em> pulled on demand. The agent shows its work. The human can trace every decision.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-tag">the human impact</span>
       <h2>The amplification loop</h2>
-      <p>Agents show their work. Uncertainty gets surfaced, not hidden. Gaps get filled collaboratively. Sessions end clean. Trust scales. Both sides get smarter.</p>
-      <span class="card-arrow">Get the prompts →</span>
-    </a>
+      <p>When the agent stops instead of guessing, the gap gets filled. The system improves. Trust builds. The human delegates more. Both sides get smarter.</p>
+      <p>Fear is replaced by discipline. Sessions end clean. Context lives in the repo — not the conversation. <em>The system remembers so the agent doesn't have to.</em></p>
+    </div>
   </section>
 
-  <section class="concepts">
-    <p class="concepts-label">Key concepts</p>
-    <div class="concept-grid">
-      <div class="concept">
+  <!-- ── HOW IT WORKS ── -->
+  <section class="how">
+    <div class="how-header">
+      <span class="section-tag">how it works</span>
+      <h2>The spine pattern</h2>
+      <p>Every repository gets the same structural skeleton. Three tiers. One contract.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier">
+        <div class="tier-label">Always loaded</div>
         <h3>Constitution</h3>
-        <p>Always loaded. Hard stops only. If the agent misses it once, the damage is irreversible. Everything else lives somewhere else.</p>
+        <p>Hard stops only. If the agent misses it once, the damage is irreversible. 30–50 lines. Every line load-bearing. The constitution is not a journal — it is a checklist for operating on production.</p>
       </div>
-      <div class="concept">
+      <div class="tier">
+        <div class="tier-label">Always visible</div>
         <h3>Manifest</h3>
-        <p>A routing table. The agent sees what context exists without holding it. Matches the task, pulls the document. Shadow board for the workbench.</p>
+        <p>A routing table that maps tasks to supply documents. The agent sees what context exists without holding any of it. Shadow board for the workbench. 10–15 lines.</p>
       </div>
-      <div class="concept">
+      <div class="tier">
+        <div class="tier-label">Pulled on demand</div>
         <h3>Supply</h3>
-        <p>Pulled on demand. One topic per document. Only invisible knowledge — the things the agent could never discover from the code alone.</p>
+        <p>One topic per document. Only invisible knowledge — the things the agent could never discover from code alone. Named by retrieval key. Loaded when earned.</p>
       </div>
-      <div class="concept">
-        <h3>Andon Rule</h3>
+    </div>
+    <div class="spine-tree">
+      <pre><code>your-repo/
+├── CONSTITUTION.md      ← hard stops, always loaded
+├── MANIFEST.md          ← routing table, always visible
+├── .context/            ← supply, pulled on demand
+│   ├── auth-architecture.md
+│   ├── network-standards.md
+│   └── deploy-procedures.md
+└── src/</code></pre>
+    </div>
+  </section>
+
+  <!-- ── KEY PRINCIPLES ── -->
+  <section class="principles">
+    <span class="section-tag">principles</span>
+    <div class="principle-grid">
+      <div class="principle">
+        <h3>Andon rule</h3>
         <p>Stop when uncertain. Surface what is missing. Help fill the gap. The system gets smarter every time the agent stops instead of guessing.</p>
       </div>
-      <div class="concept">
-        <h3>Session Discipline</h3>
-        <p>One task. One session. Clean workbench. Problem solved or gap filled — the session ends. Context lives in the repo, not the conversation.</p>
+      <div class="principle">
+        <h3>Session discipline</h3>
+        <p>One task. One session. Clean workbench. Problem solved or gap filled — the session ends. Context lives in the repo, not the conversation history.</p>
       </div>
-      <div class="concept">
-        <h3>Context Compaction</h3>
-        <p>The human maintains the system between sessions. Demote, prune, validate. The agent never needs to compress within a session because the system was built so it wouldn't have to.</p>
+      <div class="principle">
+        <h3>Knowledge boundary</h3>
+        <p>Inferable knowledge stays out. The agent can read the code. Invisible knowledge goes in — the decisions, the failures, the constraints no code can encode.</p>
+      </div>
+      <div class="principle">
+        <h3>Context compaction</h3>
+        <p>The human maintains the system between sessions. Demote, prune, validate. Sacred is the enemy of lean. If the agent never needs runtime compression, the system is working.</p>
       </div>
     </div>
   </section>
 
-  <footer class="landing-footer">
+  <!-- ── THE EVIDENCE ── -->
+  <section class="evidence">
+    <span class="section-tag">the evidence</span>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-number">−3%</div>
+        <div class="stat-label">Success rate with LLM-generated context files</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">+20%</div>
+        <div class="stat-label">Inference cost increase from untargeted context</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">+4%</div>
+        <div class="stat-label">Marginal gain from human-written files (with cost tradeoff)</div>
+      </div>
+    </div>
+    <p class="stat-source">ETH Zurich · <a href="https://arxiv.org/abs/2602.11988">arXiv:2602.11988</a> · 138 task instances · 12 repositories · 2026</p>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta">
+    <h2>Read the full thesis</h2>
+    <p>The complete argument — the degradation loop, the lean manufacturing parallel, the four rules, boundary conditions, calibration, and the force multiplier.</p>
+    <a href="thesis/" class="cta-button">The Lean Context Thesis →</a>
+  </section>
+
+  <footer class="footer">
     <p>Jay Jahns · 2026</p>
   </footer>
 </body>
