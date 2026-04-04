@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="thesis">
+  <header class="thesis-header">
+    <h1>{{ .Title }}</h1>
+    <p class="subtitle">{{ .Site.Params.description }}</p>
+  </header>
+  <div class="thesis-body">
+    {{ .Content }}
+  </div>
+  <footer class="thesis-footer">
+    <p>&copy; {{ now.Year }} {{ .Site.Params.author }}. This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p>
+  </footer>
+</article>
+{{ end }}

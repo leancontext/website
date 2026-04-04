@@ -1,0 +1,209 @@
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Root / Colors ── */
+:root {
+  --bg: #0d1117;
+  --bg-secondary: #161b22;
+  --fg: #c9d1d9;
+  --fg-muted: #8b949e;
+  --fg-heading: #e6edf3;
+  --accent: #58a6ff;
+  --border: #21262d;
+  --font-body: 'Georgia', 'Times New Roman', serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --measure: 38em;
+}
+
+/* ── Body ── */
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  line-height: 1.7;
+}
+
+/* ── Article ── */
+.thesis {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+/* ── Header ── */
+.thesis-header {
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.thesis-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--fg-heading);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.thesis-header .subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--fg-muted);
+  font-weight: 400;
+}
+
+/* ── Body Content ── */
+.thesis-body h2 {
+  display: none; /* The subtitle is already in the header */
+}
+
+.thesis-body h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--fg-heading);
+  margin-top: 3.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.thesis-body p {
+  margin-bottom: 1.2rem;
+}
+
+.thesis-body strong {
+  color: var(--fg-heading);
+  font-weight: 700;
+}
+
+.thesis-body em {
+  font-style: italic;
+}
+
+/* ── Lists ── */
+.thesis-body ol,
+.thesis-body ul {
+  margin-bottom: 1.2rem;
+  padding-left: 1.5em;
+}
+
+.thesis-body li {
+  margin-bottom: 0.4rem;
+}
+
+/* The numbered summary at the end */
+.thesis-body ol li {
+  padding-left: 0.3em;
+}
+
+/* ── Inline elements ── */
+.thesis-body a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.thesis-body a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.thesis-body code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--bg-secondary);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+}
+
+/* ── Blockquotes ── */
+.thesis-body blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1.2em;
+  margin: 1.5rem 0;
+  color: var(--fg-muted);
+  font-style: italic;
+}
+
+/* ── Horizontal rules ── */
+.thesis-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 3rem 0;
+}
+
+/* ── Footer ── */
+.thesis-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+
+.thesis-footer a {
+  color: var(--fg-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.thesis-footer a:hover {
+  color: var(--fg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+
+  .thesis {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .thesis-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .thesis-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .thesis-body h3 {
+    margin-top: 2.5rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(88, 166, 255, 0.25);
+}
+
+/* ── Scrollbar (webkit) ── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}

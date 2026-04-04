@@ -1,0 +1,14 @@
+baseURL = 'https://leancontext.dev/'
+languageCode = 'en-us'
+title = 'The Lean Context Thesis'
+
+[params]
+  description = 'How Humans and AI Agents Make Each Other Smarter'
+  author = 'Jay Jahns'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = 'monokai'
