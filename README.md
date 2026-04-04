@@ -6,7 +6,7 @@ A philosophy, an operation, and a structure for human-agent collaboration.
 
 ## What This Is
 
-The Lean Context Thesis argues that untargeted upfront context dilutes AI agents — and that the fix is not better prompts, but better systems. It proposes a three-tier architecture (constitution, manifest, supply) maintained by context compaction, governed by five disciplines (curate, route, pull, stop, demote), and sustained by a cultural contract between the human and the agent.
+The Lean Context Thesis argues that untargeted upfront context dilutes AI agents — and that the fix is not better prompts, but better systems. It proposes a three-tier architecture (constitution, manifest, supply) maintained by context compaction and sustained by a cultural contract between the human and the agent.
 
 ## The Stack
 
@@ -22,7 +22,7 @@ The Lean Context Thesis argues that untargeted upfront context dilutes AI agents
 
 - [The Thesis](https://leancontext.dev/thesis/) — the foundational argument
 - [The Problem](https://leancontext.dev/problem/) — the degradation loop and the evidence
-- [The Framework](https://leancontext.dev/framework/) — three tiers, five disciplines, knowledge boundary
+- [The Framework](https://leancontext.dev/framework/) — three tiers, four rules, knowledge boundary
 - [The Human Impact](https://leancontext.dev/impact/) — the amplification loop and calibration
 
 ## Key Concepts
