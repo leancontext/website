@@ -25,6 +25,13 @@ The thesis was written by Jay Jahns and refined through structured review with t
 - 5S is the ancestor. We absorbed it. We do not enumerate a parallel list of disciplines that maps 1:1 to 5S.
 - Pillar pages frame OUR principles derived from lean, not lean concepts with our names on them.
 
+## Tool Integration
+
+- The constitution is the canonical file: `CONSTITUTION.md`.
+- Agent tools expect their own filenames: `CLAUDE.md` (Claude Code), `AGENTS.md` (GitHub Copilot), `.cursorrules` (Cursor).
+- Bridge the gap with symlinks: `ln -s CONSTITUTION.md CLAUDE.md`. One source of truth, multiple entry points.
+- The symlink pattern is documented on the landing page and framework page. Include it in adoption guidance.
+
 ## Content Changes
 
 - The thesis is a published document. Edits should be corrections or clarifications, not rewrites.

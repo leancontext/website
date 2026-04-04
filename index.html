@@ -190,13 +190,15 @@
       <div class="tier">
         <div class="tier-label">Prompting</div>
         <h3>Tell the agent</h3>
-        <p>Add one line to your system prompt or constitution: <em>"Read MANIFEST.md before starting. Pull supply documents when the task matches a route. Stop when uncertain."</em> The agent does the rest.</p>
+        <p>Symlink your tool's expected file to the constitution: <code>ln -s CONSTITUTION.md CLAUDE.md</code> for Claude Code, <code>AGENTS.md</code> for Copilot, <code>.cursorrules</code> for Cursor. The agent finds the constitution automatically. Add one line: <em>"Read MANIFEST.md before starting. Pull supply documents when the task matches a route. Stop when uncertain."</em></p>
       </div>
     </div>
     <div class="repo-tree">
       <pre><code>your-repo/
 ├── CONSTITUTION.md      ← hard stops, always loaded
 ├── MANIFEST.md          ← routing table, always visible
+├── CLAUDE.md            → CONSTITUTION.md (symlink)
+├── AGENTS.md            → CONSTITUTION.md (symlink)
 ├── .context/            ← supply, pulled on demand
 │   ├── auth-architecture.md
 │   ├── network-standards.md
