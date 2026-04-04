@@ -3,86 +3,83 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Lean Context Thesis</title>
+  <title>Lean Context</title>
   <meta name="description" content="How Humans and AI Agents Make Each Other Smarter">
   <meta property="og:title" content="The Lean Context Thesis">
-  <meta property="og:description" content="How Humans and AI Agents Make Each Other Smarter">
+  <meta property="og:description" content="A structural approach to human-agent collaboration. Stop stuffing context. Start curating it.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav class="site-nav">
+  <nav class="nav">
     <a href="./" class="nav-logo">lean context</a>
     <div class="nav-links">
       <a href="thesis/">Thesis</a>
       <a href="standard/">Standard</a>
       <a href="prompting/">Prompting</a>
-      <a href="https://github.com/jjahns/leancontext.dev" class="nav-ext">GitHub</a>
+      <a href="https://github.com/jjahns/leancontext.dev" class="ext">GitHub</a>
     </div>
   </nav>
 
-  <article class="landing">
-    <header class="landing-header">
-      <h1>The Lean Context Thesis</h1>
-      <p class="landing-subtitle">How Humans and AI Agents Make Each Other Smarter</p>
-    </header>
+  <section class="hero">
+    <h1>More instructions make your agents worse.</h1>
+    <p class="hero-sub">The Lean Context Thesis is a structural approach to human-agent collaboration. Stop stuffing the context window. Start curating it.</p>
+    <a href="thesis/" class="hero-cta">Read the thesis →</a>
+  </section>
 
-    <div class="landing-intro">
-      <p>Untargeted upfront context makes AI agents worse, not better. The fix is not better prompts — it is a better system.</p>
-    </div>
+  <section class="cards">
+    <a href="thesis/" class="card">
+      <span class="card-tag">the problem</span>
+      <h2>End the junk drawer</h2>
+      <p>Every mistake triggers more instructions. More instructions dilute focus. Focus degrades. A different mistake happens. The loop repeats. This is the default trajectory.</p>
+      <span class="card-arrow">Read the thesis →</span>
+    </a>
+    <a href="standard/" class="card">
+      <span class="card-tag">the framework</span>
+      <h2>Lean architecture for AI</h2>
+      <p>Constitution for safety. Manifest for routing. Supply for depth. The agent pulls only what it needs, when it needs it. The spine pattern makes it structural.</p>
+      <span class="card-arrow">Read the standard →</span>
+    </a>
+    <a href="prompting/" class="card">
+      <span class="card-tag">the human impact</span>
+      <h2>The amplification loop</h2>
+      <p>Agents show their work. Uncertainty gets surfaced, not hidden. Gaps get filled collaboratively. Sessions end clean. Trust scales. Both sides get smarter.</p>
+      <span class="card-arrow">Get the prompts →</span>
+    </a>
+  </section>
 
-    <div class="landing-cards">
-      <a href="thesis/" class="card">
-        <h2>End the Context Junk Drawer</h2>
-        <p class="card-label">The Problem</p>
-        <p>Stop fighting AI hallucinations by blindly adding more rules. Stacking instructions into a massive, monolithic prompt dilutes the agent's focus and makes failures impossible to debug. We replace fear-based prompt bloat with disciplined, curated context management.</p>
-      </a>
-      <a href="standard/" class="card">
-        <h2>Lean Architecture for AI</h2>
-        <p class="card-label">The Framework</p>
-        <p>Treat the context window like a physical workbench. A Constitution for safety. A Manifest for routing. A Supply for depth. Agents explicitly pull only the knowledge they need, exactly when they need it. No cognitive clutter. No blind guessing.</p>
-      </a>
-      <a href="prompting/" class="card">
-        <h2>The Amplification Loop</h2>
-        <p class="card-label">The Human Impact</p>
-        <p>This is not just about saving tokens — it is about human governance. Agents explicitly pull context or stop when uncertain. Their reasoning becomes visible and traceable. Fear is replaced by discipline. Trust scales. Humans and agents make each other smarter.</p>
-      </a>
-    </div>
-
-    <div class="landing-concepts">
-      <h2>Key Concepts</h2>
-      <div class="concept-grid">
-        <div class="concept">
-          <h3>Constitution</h3>
-          <p>Always loaded. Hard stops only. 30–50 lines. If the agent misses it once, the damage is irreversible.</p>
-        </div>
-        <div class="concept">
-          <h3>Manifest</h3>
-          <p>A routing table. Maps task patterns to supply documents. The agent sees what is available without holding it.</p>
-        </div>
-        <div class="concept">
-          <h3>Supply</h3>
-          <p>Pulled on demand. One topic per document. Invisible knowledge only — what the agent could never infer from code.</p>
-        </div>
-        <div class="concept">
-          <h3>Andon Rule</h3>
-          <p>Stop and surface uncertainty instead of guessing. The agent helps fill the gap. The session ends. The system improves.</p>
-        </div>
-        <div class="concept">
-          <h3>Session Discipline</h3>
-          <p>One task, one session, clean workbench. When the problem is solved or the gap is filled, the session ends.</p>
-        </div>
-        <div class="concept">
-          <h3>Context Compaction</h3>
-          <p>The human maintains the system between sessions so the agent never needs to compress within one.</p>
-        </div>
+  <section class="concepts">
+    <p class="concepts-label">Key concepts</p>
+    <div class="concept-grid">
+      <div class="concept">
+        <h3>Constitution</h3>
+        <p>Always loaded. Hard stops only. If the agent misses it once, the damage is irreversible. Everything else lives somewhere else.</p>
+      </div>
+      <div class="concept">
+        <h3>Manifest</h3>
+        <p>A routing table. The agent sees what context exists without holding it. Matches the task, pulls the document. Shadow board for the workbench.</p>
+      </div>
+      <div class="concept">
+        <h3>Supply</h3>
+        <p>Pulled on demand. One topic per document. Only invisible knowledge — the things the agent could never discover from the code alone.</p>
+      </div>
+      <div class="concept">
+        <h3>Andon Rule</h3>
+        <p>Stop when uncertain. Surface what is missing. Help fill the gap. The system gets smarter every time the agent stops instead of guessing.</p>
+      </div>
+      <div class="concept">
+        <h3>Session Discipline</h3>
+        <p>One task. One session. Clean workbench. Problem solved or gap filled — the session ends. Context lives in the repo, not the conversation.</p>
+      </div>
+      <div class="concept">
+        <h3>Context Compaction</h3>
+        <p>The human maintains the system between sessions. Demote, prune, validate. The agent never needs to compress within a session because the system was built so it wouldn't have to.</p>
       </div>
     </div>
+  </section>
 
-    <footer class="landing-footer">
-      <p>Jay Jahns · April 2026</p>
-      <p>Built with conviction by a human and three AI models who disagreed productively.</p>
-    </footer>
-  </article>
+  <footer class="landing-footer">
+    <p>Jay Jahns · 2026</p>
+  </footer>
 </body>
 </html>
