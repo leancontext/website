@@ -1,6 +1,4 @@
-baseURL = '/'
-relativeURLs = true
-uglyURLs = false
+baseURL = 'https://jjahns.github.io/leancontext.dev/'
 languageCode = 'en-us'
 title = 'The Lean Context Thesis'
 
