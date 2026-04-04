@@ -129,36 +129,35 @@
       <h2>One task. One session. Clean workbench.</h2>
       <p>Problem solved or gap filled &mdash; the session ends. Context lives in the repo, not the conversation history. The agent does not carry baggage from previous sessions. It starts clean every time.</p>
       <p>When a gap is found, help write the supply document to fill it. When the problem is solved, the session ends. This is the <em>andon rule</em> in practice: the act of stopping is the system working, not failing.</p>
-      <div class="pillar-callout pillar-callout--impact">
-        <p>The system remembers so the agent doesn't have to. Context compaction is the human maintaining the system between sessions. Demote, prune, validate. Sacred is the enemy of lean.</p>
-      </div>
     </div>
     <div class="pillar-section__visual pillar-section__visual--impact">
-      <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
         <!-- Session lifecycle -->
-        <!-- Session box -->
-        <rect x="60" y="40" width="180" height="160" rx="10" fill="#b4a0f4" fill-opacity="0.08" stroke="#b4a0f4" stroke-opacity="0.4" stroke-width="1.5"/>
-        <text x="150" y="30" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b4a0f4" fill-opacity="0.55">session</text>
-        <!-- Steps inside -->
-        <rect x="80" y="60" width="140" height="24" rx="4" fill="#b4a0f4" fill-opacity="0.08" stroke="#b4a0f4" stroke-opacity="0.4" stroke-width="1"/>
-        <text x="150" y="76" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#b4a0f4" fill-opacity="0.65">load constitution</text>
-        <rect x="80" y="94" width="140" height="24" rx="4" fill="#b4a0f4" fill-opacity="0.08" stroke="#b4a0f4" stroke-opacity="0.4" stroke-width="1"/>
-        <text x="150" y="110" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#b4a0f4" fill-opacity="0.65">read manifest</text>
-        <rect x="80" y="128" width="140" height="24" rx="4" fill="#b4a0f4" fill-opacity="0.08" stroke="#b4a0f4" stroke-opacity="0.4" stroke-width="1"/>
-        <text x="150" y="144" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#b4a0f4" fill-opacity="0.65">pull supply</text>
-        <rect x="80" y="162" width="140" height="24" rx="4" fill="#b4a0f4" fill-opacity="0.08" stroke="#b4a0f4" stroke-opacity="0.45" stroke-width="1"/>
-        <text x="150" y="178" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#b4a0f4" fill-opacity="0.6">solve or surface</text>
-        <!-- Exit arrow -->
-        <path d="M150 200 L150 220" stroke="#b4a0f4" stroke-opacity="0.5" stroke-width="1.5" fill="none"/>
-        <text x="150" y="235" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#b4a0f4" fill-opacity="0.55">session ends clean</text>
+        <rect x="60" y="30" width="180" height="155" rx="10" fill="#b4a0f4" fill-opacity="0.1" stroke="#b4a0f4" stroke-opacity="0.5" stroke-width="1.5"/>
+        <text x="150" y="22" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#b4a0f4" fill-opacity="0.75">session</text>
+        <rect x="80" y="48" width="140" height="26" rx="5" fill="#b4a0f4" fill-opacity="0.12" stroke="#b4a0f4" stroke-opacity="0.5" stroke-width="1"/>
+        <text x="150" y="65" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b4a0f4" fill-opacity="0.8">load constitution</text>
+        <rect x="80" y="82" width="140" height="26" rx="5" fill="#b4a0f4" fill-opacity="0.12" stroke="#b4a0f4" stroke-opacity="0.5" stroke-width="1"/>
+        <text x="150" y="99" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b4a0f4" fill-opacity="0.8">read manifest</text>
+        <rect x="80" y="116" width="140" height="26" rx="5" fill="#b4a0f4" fill-opacity="0.12" stroke="#b4a0f4" stroke-opacity="0.5" stroke-width="1"/>
+        <text x="150" y="133" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b4a0f4" fill-opacity="0.8">pull supply</text>
+        <rect x="80" y="150" width="140" height="26" rx="5" fill="#b4a0f4" fill-opacity="0.15" stroke="#b4a0f4" stroke-opacity="0.55" stroke-width="1"/>
+        <text x="150" y="167" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b4a0f4" fill-opacity="0.8">solve or surface</text>
+        <path d="M150 185 L150 205" stroke="#b4a0f4" stroke-opacity="0.5" stroke-width="1.5" fill="none"/>
+        <text x="150" y="218" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b4a0f4" fill-opacity="0.7">session ends clean</text>
       </svg>
     </div>
   </section>
+  <div class="pillar-callout-section">
+    <div class="pillar-callout pillar-callout--impact">
+      <p>The system remembers so the agent doesn't have to. Context compaction is the human maintaining the system between sessions. Demote, prune, validate. Sacred is the enemy of lean.</p>
+    </div>
+  </div>
 
   <!-- ── SUSTAINING ── -->
   <section class="pillar-section">
     <div class="pillar-section__tag pillar-section__tag--impact">sustain</div>
-    <h2>The fifth S is the hardest.</h2>
+    <h2>Discipline outlasts tooling.</h2>
     <p>Lean systems decay without discipline. No amount of tooling eliminates the need for human judgment. The constitution will bloat. This is not a risk. It is a certainty.</p>
     <p>Every near-miss becomes a new rule. Every incident gets memorialized as a prohibition. The motivation is reasonable. The result is a document that grows monotonically, because adding a rule feels like safety and removing one feels like gambling.</p>
     <div class="pillar-steps">

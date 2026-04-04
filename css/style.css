@@ -154,7 +154,8 @@ body { background: var(--bg); color: var(--fg); font-family: var(--sans); line-h
 .pillar-section__visual--impact { background: var(--pastel-violet-glow); border: 1px solid rgba(180,160,244,0.06); }
 .pillar-section__visual svg { width: 100%; max-width: 340px; height: auto; }
 
-.pillar-callout { padding: 2rem 2.5rem; border-radius: 14px; margin: 2rem 0; }
+.pillar-callout { padding: 2rem 2.5rem; border-radius: 14px; margin: 0; }
+.pillar-callout-section { max-width: var(--max); margin: 0 auto; padding: 0 2rem 2rem; }
 .pillar-callout--problem { background: var(--pastel-coral-dim); border-left: 3px solid var(--pastel-coral); }
 .pillar-callout--framework { background: var(--pastel-mint-dim); border-left: 3px solid var(--pastel-mint); }
 .pillar-callout--impact { background: var(--pastel-violet-dim); border-left: 3px solid var(--pastel-violet); }
