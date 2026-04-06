@@ -23,7 +23,28 @@ If existing instruction files are found, read them. Their content will be distri
 
 ---
 
-## Step 2: Create the supply directory
+## Step 2: Present the audit
+
+**Stop here and present your findings to the human before making any changes.**
+
+Output the following:
+
+1. **Project summary** — name, language, framework, build system, deployment method.
+2. **Existing instruction files found** — list each file, its line count, and a one-sentence summary of what it contains.
+3. **Proposed constitution rules** — list the hard stops you would extract. For each, state the source (which file or inference) and why it qualifies as irreversible.
+4. **Proposed manifest routes** — list the task patterns and supply documents you would create.
+5. **Content that does not qualify for the constitution** — list content from existing instruction files that would move to supply documents, and which supply document it would go to.
+6. **Content you cannot classify** — anything you are unsure about. Present it for the human to decide.
+7. **Files that will be created** — full list of new files and symlinks.
+8. **Files that will not be changed** — confirm which existing files remain untouched.
+
+**Wait for the human to review and approve before proceeding to Step 3.**
+
+If the human requests changes to the plan, revise and present again. Do not begin creating files until the human confirms.
+
+---
+
+## Step 3: Create the supply directory
 
 ```bash
 mkdir -p .context
@@ -33,7 +54,7 @@ If `.context/` already exists, leave its contents in place.
 
 ---
 
-## Step 3: Create `CONSTITUTION.md`
+## Step 4: Create `CONSTITUTION.md`
 
 Create `CONSTITUTION.md` in the repository root.
 
@@ -75,13 +96,13 @@ Populate hard stops and procedures by inferring from:
 2. CI/CD configuration, deployment scripts, and protected branch settings.
 3. The nature of the project (database? production API? infrastructure?).
 
-Everything from existing instruction files that does **not** qualify as a hard stop goes into supply documents in Step 5.
+Everything from existing instruction files that does **not** qualify as a hard stop goes into supply documents in Step 6.
 
 **Demotion rule**: The constitution will bloat. This is certain. Revisit it regularly. For every line, ask: if the agent misses this once, is the damage irreversible? If the answer is no, move it to a `.context/` supply document. The lesson is preserved. The workbench stays clean.
 
 ---
 
-## Step 4: Create `MANIFEST.md`
+## Step 5: Create `MANIFEST.md`
 
 Create `MANIFEST.md` in the repository root.
 
@@ -113,7 +134,7 @@ Generate 3–8 routes based on what you discovered in Step 1. Only create routes
 
 ---
 
-## Step 5: Create supply documents
+## Step 6: Create supply documents
 
 For each route in the manifest, create the corresponding `.context/[name].md` file.
 
@@ -212,7 +233,7 @@ A domain `MANIFEST.md` follows the same format as the root manifest:
 
 ---
 
-## Step 6: Create tool symlinks
+## Step 7: Create tool symlinks
 
 Symlink the constitution so each agent tool finds it automatically:
 
@@ -229,7 +250,7 @@ If any of these files already exist as real files (not symlinks), **do not overw
 
 ---
 
-## Step 7: Verify nothing is excluded
+## Step 8: Verify nothing is excluded
 
 Check `.gitignore`. Ensure none of these are ignored:
 - `CONSTITUTION.md`
@@ -245,7 +266,7 @@ If any are listed in `.gitignore`, remove those entries.
 
 ---
 
-## Step 8: Multi-repository support
+## Step 9: Multi-repository support
 
 **Skip this step if this is a standalone repository.**
 
@@ -302,7 +323,7 @@ Add a manifest route:
 
 ---
 
-## Step 9: Summary
+## Step 10: Summary
 
 After completing all steps, output:
 
@@ -312,7 +333,7 @@ After completing all steps, output:
 4. **Supply documents** — count and list, noting any with placeholder sections.
 5. **Migrated content** — list any existing instruction files whose content was distributed into the new structure.
 6. **Unresolved** — any content from old instruction files that you were unsure how to classify. Present it to the human for a decision.
-7. **Multi-repo** — if Step 8 was applied, describe the parent/child relationship established.
+7. **Multi-repo** — if Step 9 was applied, describe the parent/child relationship established.
 
 **Do not delete any original files until the human confirms the migration is complete.**
 
