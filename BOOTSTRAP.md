@@ -115,6 +115,41 @@ Generate 3–8 routes based on what you discovered in Step 1. Only create routes
 
 For each route in the manifest, create the corresponding `.context/[name].md` file.
 
+**Only write down invisible knowledge** — why decisions were made, what was tried and rejected, what constraints the code does not encode. If the agent can discover it by reading the code, it does not belong here.
+
+### Decisions as a first-class pattern
+
+Create `.context/decisions/` for architectural decision records. The thesis identifies invisible knowledge as "why a decision was made, what was tried and rejected" — that deserves its own home, not just a heading buried inside topic documents.
+
+```bash
+mkdir -p .context/decisions
+```
+
+Each decision record can be as short as it needs to be:
+
+```markdown
+# [Decision Title]
+
+**Status**: Accepted | Superseded | Deprecated
+**Date**: YYYY-MM-DD
+
+## Decision
+[What was decided.]
+
+## Why
+[Why this was chosen. What was considered and rejected.]
+
+## Constraints
+[What external factors forced or influenced this decision.]
+```
+
+Add a manifest route for decisions:
+```
+| Architectural or design decision questions | `.context/decisions/` |
+```
+
+### Topic-based supply documents
+
 Each supply document follows this structure:
 
 ```markdown
@@ -141,7 +176,40 @@ Populate supply documents from:
 
 The human will fill in invisible knowledge — the decisions, trade-offs, and context that only exist in someone's head.
 
-**Size guidance**: Each supply document should be 50–150 lines. If it exceeds 150, split it into focused documents and update the manifest routes.
+**Size guidance**: Each supply document should be under 150 lines. A three-line decision record or a five-line principle statement is valid — the standard says "small enough that loading it is cheap, and specific enough that all of it is relevant." If a document exceeds 150 lines, split it into focused documents and update the manifest routes.
+
+### Domain manifests
+
+Start flat. When a domain inside `.context/` accumulates more than ~5 files, give it its own directory and `MANIFEST.md`. The root manifest routes to domains; domain manifests route to documents.
+
+```
+.context/
+├── auth.md
+├── deploy.md
+├── testing.md
+├── decisions/              ← domain with sub-routing
+│   ├── MANIFEST.md         ← routes within this domain
+│   ├── 001-database.md
+│   ├── 002-auth-provider.md
+│   └── 003-api-versioning.md
+└── infrastructure/         ← another domain
+    ├── MANIFEST.md
+    ├── network.md
+    ├── storage.md
+    └── monitoring.md
+```
+
+A domain `MANIFEST.md` follows the same format as the root manifest:
+
+```markdown
+# Decisions Manifest
+
+| Task Pattern | Context Source |
+|---|---|
+| Database architecture questions | `001-database.md` |
+| Auth provider selection | `002-auth-provider.md` |
+| API versioning approach | `003-api-versioning.md` |
+```
 
 ---
 
@@ -173,6 +241,8 @@ Check `.gitignore`. Ensure none of these are ignored:
 - `.cursorrules`
 
 If any are listed in `.gitignore`, remove those entries.
+
+**Inverse rule**: If any `.context/` content is generated, synced from upstream, or fetched at build time (e.g., a parent constitution pulled via curl, auto-generated dependency maps), add those specific paths to `.gitignore`. Authored context is tracked. Generated context is not.
 
 ---
 
@@ -228,6 +298,8 @@ Add a manifest route:
 ```
 | Questions about platform-wide governance | `.context/parent-constitution.md` |
 ```
+
+**Staleness warning**: This is a point-in-time snapshot. Establish a process to refresh it when the parent changes — a CI hook, an agent skill, or a periodic manual check. A stale parent constitution is worse than none — the agent will follow outdated governance with full confidence.
 
 ---
 
