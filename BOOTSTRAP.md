@@ -87,7 +87,7 @@ Create `MANIFEST.md` in the repository root.
 
 **This is a routing table. It maps task patterns to supply documents.**
 
-- Target: 10–20 lines. It is an index, not a document.
+- Target: 10–15 lines. It is an index, not a document.
 - The manifest never contains context itself — only pointers.
 
 Use this structure:
@@ -172,11 +172,11 @@ Each supply document follows this structure:
 
 Populate supply documents from:
 1. Content from existing instruction files that did not qualify for the constitution.
-2. Knowledge inferable from the codebase: build scripts, CI config, directory conventions.
+2. Invisible knowledge the human provides: decisions, trade-offs, rejected approaches, constraints not encoded in the code.
 3. For decisions you cannot infer, leave a placeholder:
    `<!-- FILL IN: Why was this approach chosen? What was rejected? -->`
 
-The human will fill in invisible knowledge — the decisions, trade-offs, and context that only exist in someone's head.
+Do **not** document what the agent can discover by reading the code — file layout, naming conventions, dependency structure, build commands. That is inferable knowledge. Writing it down is redundant at best and harmful at worst.
 
 **Size guidance**: Each supply document should be under 150 lines. A three-line decision record or a five-line principle statement is valid — the standard says "small enough that loading it is cheap, and specific enough that all of it is relevant." If a document exceeds 150 lines, split it into focused documents and update the manifest routes.
 
@@ -318,6 +318,16 @@ After completing all steps, output:
 7. **Multi-repo** — if Step 8 was applied, describe the parent/child relationship established.
 
 **Do not delete any original files until the human confirms the migration is complete.**
+
+---
+
+## What happens next
+
+The bootstrap is scaffolding. The system improves through use.
+
+**Calibration**: Watch the agent work. When it succeeds without context you thought it needed, remove that context. When it fails, write a supply document to fill the gap. When it stops and asks, you have found invisible knowledge that needs to be externalized. Each cycle sharpens your model of what the agent can and cannot infer.
+
+**Sustain**: Automate what you can — line budgets on the constitution, staleness checks on supply documents, dead-entry audits on the manifest. But the decision to promote, demote, or retire a document is human judgment. A context system that launches clean and decays over time has not solved the problem. It has deferred it.
 
 ---
 
