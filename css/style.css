@@ -210,6 +210,9 @@ body { background: var(--bg); color: var(--fg); font-family: var(--sans); line-h
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
+  .nav { flex-wrap: wrap; gap: 1rem; padding: 1.25rem 1.5rem; }
+  .nav-links { gap: 1.25rem; flex-wrap: wrap; }
+  .nav-links a { font-size: 0.8rem; }
   .hero { padding: 5rem 1.5rem 4rem; }
   .hero h1 { font-size: 2.2rem; }
   .pillars { grid-template-columns: 1fr; padding: 0 1.5rem 4rem; }
@@ -231,6 +234,12 @@ body { background: var(--bg); color: var(--fg); font-family: var(--sans); line-h
   .pillar-code { padding: 0 1.5rem; }
   .pillar-back { padding: 3rem 1.5rem 0; }
   .pillar-illustration { height: 140px; }
+}
+
+@media (max-width: 480px) {
+  .nav { justify-content: center; text-align: center; }
+  .nav-links { justify-content: center; gap: 1rem; }
+  .nav-links a { font-size: 0.75rem; }
 }
 
 ::selection { background: rgba(59, 130, 246, 0.3); }
